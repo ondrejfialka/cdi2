@@ -1,9 +1,6 @@
 package cz.ucl.cdi.producer;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.Properties;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -24,7 +21,8 @@ public class EShopResources {
         Reader result = null;
 
         try {
-            result = new FileReader("D:/UCL/jee_workspace/jee2017/CDI_I/eshop_config.txt");
+            String path = System.getProperty("user.home");
+            result = new FileReader(path + "/eshop_config.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -41,7 +39,7 @@ public class EShopResources {
     }
     
     @Produces
-    @SessionScoped
+    @ApplicationScoped
     @Configuration
     public Properties getConfiguration(@ConfigurationFile Reader r) {
         Properties result = new Properties();
