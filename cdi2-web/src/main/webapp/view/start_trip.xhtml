@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head/>
+<h:body>
+    <ui:composition template="/template/page.xhtml">
+        <ui:define name="pageTitle">#{local.start_trip}</ui:define>
+        <ui:define name="primaryContent">
+            <h:form>
+                <p:dataTable var="holiday" value="#{testData.allHolidays}">
+                    <p:column>
+                        <f:facet name="header">#{local.holiday_name}</f:facet>
+                        #{holiday.name}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">#{local.holiday_price}</f:facet>
+                        <h:outputText value="#{holiday.price}">
+                            <f:convertNumber locale="#{configuredLocale.language}" minFractionDigits="1"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <h:commandLink action="#{tripPurchaseControllerBean.createContract(holiday.id)}"
+                                       value="#{local.select}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

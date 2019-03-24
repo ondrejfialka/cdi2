@@ -3,3 +3,6 @@ cdi2-business-module/.project
 cdi2-business-module/.classpath
 cdi2-web/.project
 cdi2-web/.classpath
+.idea/
+cdi2.iml
+cdi2-business-module/cdi2-business-module.iml
