@@ -28,8 +28,7 @@ public class TripPurchaseControllerBean implements TripPurchaseController, Seria
     private Conversation conversation;
 
     @Inject
-    @Any
-    Event<TripPurchaseCompleted> purchaseCompleteEvent;
+    private Event<TripPurchaseCompleted> purchaseCompleteEvent;
 
     @Override
     public String createContract(Long holidayId) {
